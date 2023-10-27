@@ -17,6 +17,7 @@ class VoieController extends AbstractController
     #[Route('/', name: 'app_voie_index', methods: ['GET'])]
     public function index(VoieRepository $voieRepository): Response
     {
+        //$voieRepository->findAll();
         return $this->render('voie/index.html.twig', [
             'voies' => $voieRepository->findAll(),
         ]);
@@ -71,7 +72,7 @@ class VoieController extends AbstractController
     #[Route('/{id}', name: 'app_voie_delete', methods: ['POST'])]
     public function delete(Request $request, Voie $voie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$voie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $voie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($voie);
             $entityManager->flush();
         }

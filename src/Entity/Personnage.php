@@ -42,6 +42,14 @@ class Personnage
     #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
     private ?Technique $technique = null;
 
+   
+    public function __toString()
+    {
+        return $this->nom;
+
+    }
+   
+   
     public function getId(): ?int
     {
         return $this->id;

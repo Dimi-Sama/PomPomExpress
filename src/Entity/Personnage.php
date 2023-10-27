@@ -27,6 +27,12 @@ class Personnage
     #[ORM\Column]
     private ?int $etoile = null;
 
+    #[ORM\OneToOne(mappedBy: 'personage', cascade: ['persist', 'remove'])]
+    private ?Competence $competence = null;
+
+    #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    private ?Ultime $ultime = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +82,50 @@ class Personnage
     public function setEtoile(int $etoile): static
     {
         $this->etoile = $etoile;
+
+        return $this;
+    }
+
+    public function getCompetence(): ?Competence
+    {
+        return $this->competence;
+    }
+
+    public function setCompetence(?Competence $competence): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($competence === null && $this->competence !== null) {
+            $this->competence->setPersonage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($competence !== null && $competence->getPersonage() !== $this) {
+            $competence->setPersonage($this);
+        }
+
+        $this->competence = $competence;
+
+        return $this;
+    }
+
+    public function getUltime(): ?Ultime
+    {
+        return $this->ultime;
+    }
+
+    public function setUltime(?Ultime $ultime): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($ultime === null && $this->ultime !== null) {
+            $this->ultime->setPersonnage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($ultime !== null && $ultime->getPersonnage() !== $this) {
+            $ultime->setPersonnage($this);
+        }
+
+        $this->ultime = $ultime;
 
         return $this;
     }

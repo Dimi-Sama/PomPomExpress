@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Voie{% endblock %}
+
+{% block body %}
+    <h1>Edit Voie</h1>
+
+    {{ include('voie/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_voie_index') }}">back to list</a>
+
+    {{ include('voie/_delete_form.html.twig') }}
+{% endblock %}

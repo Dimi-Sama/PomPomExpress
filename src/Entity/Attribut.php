@@ -24,6 +24,13 @@ class Attribut
     #[ORM\OneToMany(mappedBy: 'attribut', targetEntity: Personnage::class)]
     private Collection $personnages;
 
+
+    public function __toString()
+    {
+        return $this->nom;
+
+    }
+
     public function __construct()
     {
         $this->personnages = new ArrayCollection();

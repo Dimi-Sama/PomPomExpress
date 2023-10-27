@@ -20,7 +20,7 @@ class Talent
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 2500)]
     private ?string $description = null;
 
     public function getId(): ?int

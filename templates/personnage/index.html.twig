@@ -23,9 +23,11 @@
 					<td>{{ personnage.nom }}</td>
 					<td>{{ personnage.etoile }}</td>
 					<td>
-						<img style="width:65%" src="../images/personnage/{{ personnage.nom }}.png" alt="personnage : {{ personnage.nom }}" </td> <td> <a href="{{ path('app_personnage_show', {'id': personnage.id}) }}">>
-					</td>
 
+						{% set nomPersonnage = personnage.nom %}
+						{% set imagePath = asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') %}
+						<img style="width:10%" src="..{{imagePath}}" alt="personnage : {{ personnage.nom }}">
+					</td>
 					<td>
 						<a href="{{ path('app_personnage_show', {'id': personnage.id}) }}">show</a>
 						<a href="{{ path('app_personnage_edit', {'id': personnage.id}) }}">edit</a>

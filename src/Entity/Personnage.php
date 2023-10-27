@@ -33,6 +33,15 @@ class Personnage
     #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
     private ?Ultime $ultime = null;
 
+    #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    private ?Normale $normale = null;
+
+    #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    private ?Talent $talent = null;
+
+    #[ORM\OneToOne(mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    private ?Technique $technique = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -126,6 +135,57 @@ class Personnage
         }
 
         $this->ultime = $ultime;
+
+        return $this;
+    }
+
+    public function getNormale(): ?Normale
+    {
+        return $this->normale;
+    }
+
+    public function setNormale(Normale $normale): static
+    {
+        // set the owning side of the relation if necessary
+        if ($normale->getPersonnage() !== $this) {
+            $normale->setPersonnage($this);
+        }
+
+        $this->normale = $normale;
+
+        return $this;
+    }
+
+    public function getTalent(): ?Talent
+    {
+        return $this->talent;
+    }
+
+    public function setTalent(Talent $talent): static
+    {
+        // set the owning side of the relation if necessary
+        if ($talent->getPersonnage() !== $this) {
+            $talent->setPersonnage($this);
+        }
+
+        $this->talent = $talent;
+
+        return $this;
+    }
+
+    public function getTechnique(): ?Technique
+    {
+        return $this->technique;
+    }
+
+    public function setTechnique(Technique $technique): static
+    {
+        // set the owning side of the relation if necessary
+        if ($technique->getPersonnage() !== $this) {
+            $technique->setPersonnage($this);
+        }
+
+        $this->technique = $technique;
 
         return $this;
     }

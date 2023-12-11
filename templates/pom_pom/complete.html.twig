@@ -1,9 +1,35 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}
 	bienvenue dans POM POM EXPRESS
 {% endblock %}
 {% block body %}
+	<style>
+		.charaFrame {
+			display: inline-block !important;
+			width: 15%;
+			height: 30%;
+		}
+		.charaImage {
+			overflow: hidden;
+			height: 70%;
+		}
+		.charaName {
+			width: 100%;
+			height: 30%;
+		}
+		.FilterBar {
+			width: 7.1%;
+			height: 50px;
+			border: solid black 3px
+		}
+		.FilterButton {
+			width: 0;
+			height: 50px;
+			border: solid black 3px
+		}
+	</style>
+	{{ include('pom_pom/filtreur.html.twig') }}
 	{{ include('pom_pom/tableau.html.twig') }}
-
 {% endblock %}

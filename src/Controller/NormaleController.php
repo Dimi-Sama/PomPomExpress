@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/normale')]
+#[Route('/pompom/normale')]
 class NormaleController extends AbstractController
 {
     #[Route('/', name: 'app_normale_index', methods: ['GET'])]

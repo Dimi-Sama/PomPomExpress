@@ -26,9 +26,20 @@
 			<header class="d-flex justify-content-center py-3 bg-dark">
 				<ul class="nav nav-pills">
 					<li class="nav-item ">
-						<a href="{{ path("index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Index</a>
+						<a href="{{ path("app_voie_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Voies</a>
 					</li>
-
+					<li class="nav-item ">
+						<a href="{{ path("app_personnage_index") }}" class="nav-link {% if app.request.get('_route') == 'app_personnage_index' %} active{% endif %}">Personnages</a>
+					</li>
+					<li class="nav-item ">
+						<a href="{{ path("app_attribut_index") }}" class="nav-link {% if app.request.get('_route') == 'app_attribut_index' %} active{% endif %}">Attributs</a>
+					</li>
+					<li class="nav-item ">
+						<a href="{{ path("app_normale_index") }}" class="nav-link {% if app.request.get('_route') == 'app_normale_index' %} active{% endif %}">Normales</a>
+					</li>
+					<li class="nav-item ">
+						<a href="{{ path("app_talent_index") }}" class="nav-link {% if app.request.get('_route') == 'app_talent_index' %} active{% endif %}">Talents</a>
+					</li>
 				</ul>
 
 			</ul>

@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ personnage.id }}</td>
-            </tr>
-            <tr>
                 <th>Nom</th>
                 <td>{{ personnage.nom }}</td>
             </tr>
@@ -19,6 +15,26 @@
                 <th>Etoile</th>
                 <td>{{ personnage.etoile }}</td>
             </tr>
+            <tr>
+            <th>attribut</th>
+                <td>{{ personnage.attribut }}</td>
+            </tr>
+            <tr>
+            <th>Voie</th>
+                <td>{{ personnage.voie }}</td>
+            </tr>
+            <th>Talent</th>
+                <table class="table">
+		        <thead><tr><th>{{ personnage.talent.nom }}</th></tr></thead>
+                <tbody><td>{{ personnage.talent.description }}</td></tbody>
+            </tr>
+            <th>Normale</th>
+                <table class="table">
+		        <thead><tr><th>{{ personnage.normale.nom }}</th></tr></thead>
+                <tbody><td>{{ personnage.normale.description }}</td></tbody>
+            </tr>
+            
+
         </tbody>
     </table>
 

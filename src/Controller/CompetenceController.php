@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/competence')]
+#[Route('/pompom/competence')]
 class CompetenceController extends AbstractController
 {
     #[Route('/', name: 'app_competence_index', methods: ['GET'])]

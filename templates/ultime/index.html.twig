@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ultime index{% endblock %}
+
+{% block body %}
+    <h1>Ultime index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ultime in ultimes %}
+            <tr>
+                <td>{{ ultime.id }}</td>
+                <td>{{ ultime.nom }}</td>
+                <td>{{ ultime.description }}</td>
+                <td>
+                    <a href="{{ path('app_ultime_show', {'id': ultime.id}) }}">show</a>
+                    <a href="{{ path('app_ultime_edit', {'id': ultime.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ultime_new') }}">Create new</a>
+{% endblock %}

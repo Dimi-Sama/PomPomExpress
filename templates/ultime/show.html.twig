@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ultime{% endblock %}
+
+{% block body %}
+    <h1>Ultime</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ultime.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ ultime.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ultime.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ultime_index') }}">back to list</a>
+
+    <a href="{{ path('app_ultime_edit', {'id': ultime.id}) }}">edit</a>
+
+    {{ include('ultime/_delete_form.html.twig') }}
+{% endblock %}

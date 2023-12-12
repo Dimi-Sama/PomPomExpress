@@ -2,11 +2,16 @@
 	{% for personnage in personnages %}
 		<div class="charaFrame {{personnage.attribut}}">
 			{% set nomPersonnage = personnage.nom %}
+			{% set idPersonnage = personnage.id %}
+			<a href="{{ path('app_personnage_affichage', {'id': idPersonnage}) }}">
 			<div class="charaImage">
+			
+			
 				{% set imagePath = asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') %}
 			</div>
 			<img style="width:155px ; object-fit: cover; aspect-ratio: 1 / 1" src="..{{imagePath}}" alt="personnage : {{ personnage.nom }}">
 			<div>
+			<a>
 				<div class="charaName">
 					{{ personnage.nom }}
 				</div>

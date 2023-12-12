@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AttributRepository;
 use App\Repository\PersonnageRepository;
+use App\Entity\Personnage;
 use App\Repository\VoieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,4 +30,12 @@ class PomPomController extends AbstractController
             'voies' => $voieRepository->findAll(),
         ]);
     }
+    #[Route('/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]
+    public function show(Personnage $personnage): Response
+    {
+        return $this->render('personnage/affichage.html.twig', [
+            'personnage' => $personnage,
+        ]);
+    }
+
 }

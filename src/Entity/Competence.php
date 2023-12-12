@@ -21,6 +21,10 @@ class Competence
 
     #[ORM\Column(length: 2500)]
     private ?string $description = null;
+    
+    public function __toString(){
+        return $this->nom;
+    }
 
     public function getId(): ?int
     {

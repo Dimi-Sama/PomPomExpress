@@ -16,6 +16,9 @@ class PersonnageType extends AbstractType
             ->add('etoile')
             ->add('attribut')
             ->add('voie')
+            ->add('competence')
+            ->add('ultime')
+
         ;
     }
 

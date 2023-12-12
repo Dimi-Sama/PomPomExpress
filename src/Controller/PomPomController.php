@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use App\Repository\AttributRepository;
 use App\Repository\PersonnageRepository;
+use App\Entity\Article;
 use App\Entity\Personnage;
 use App\Repository\VoieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,6 +30,20 @@ class PomPomController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
             'attributs' => $attributRepository->findAll(),
             'voies' => $voieRepository->findAll(),
+        ]);
+    }
+    #[Route('wiki/article', name: 'public_article', methods: ['GET'])]
+    public function article(ArticleRepository $articleRepository): Response
+    {
+        return $this->render('pom_pom/article.html.twig', [
+            'articles' => $articleRepository->findAll(),
+        ]);
+    }
+    #[Route('wiki/article/{id}', name: 'public_article_show', methods: ['GET'])]
+    public function showarticle(Article $article): Response
+    {
+        return $this->render('pom_pom/article_show.html.twig', [
+            'article' => $article,
         ]);
     }
     #[Route('/wiki/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]

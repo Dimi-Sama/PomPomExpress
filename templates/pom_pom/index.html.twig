@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PomPomController!{% endblock %}
+{% block title %}Hello PomPomController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	{# <img src="../images/img/space-stars-background-92uihsmmvz4ne320.webp" alt="" srcset=""> #}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Administrator/Documents/SymfonyProject/PomPomExpress/src/Controller/PomPomController.php'|file_link(0) }}">src/Controller/PomPomController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Administrator/Documents/SymfonyProject/PomPomExpress/templates/pom_pom/index.html.twig'|file_link(0) }}">templates/pom_pom/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+
+		.div1 h1 {
+			/* Pom-Pom Express */
+
+			position: absolute;
+			font-family: 'Spy Agency Expanded Italic';
+			font-style: italic;
+			font-weight: 400;
+			font-size: 150px;
+			line-height: 152px;
+			color: #FFFFFF;
+			margin-top: 12%;
+			margin-left: 6%;
+            -webkit-text-stroke: 5px black;
+            text-shadow: -12px 10px #ffc107;
+
+
+		}
+	</style>
+	<div class="parent">
+		<div class="div1">
+			<h1>POM-POM EXPRESS<h1></div>
+			</div>
+
+		{% endblock %}

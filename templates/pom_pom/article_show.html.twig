@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>{{ article.titre }}</th>
+                <th>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</th>
+            </tr>
+            <tr>
+                <td>{{ article.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('public_article') }}">back to list</a>
+
+{% endblock %}

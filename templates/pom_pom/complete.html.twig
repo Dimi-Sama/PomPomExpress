@@ -14,22 +14,42 @@
 		.charaImage {
 			overflow: hidden;
 			height: 70%;
+			display: inherit;
 		}
 		.charaName {
 			width: 100%;
 			height: 30%;
+			display: inherit;
 		}
 		.FilterBar {
-			width: 7.1%;
-			height: 50px;
-			border: solid black 3px
+			width: 100%;
+			height: 100%;
+			border: solid black 3px;
 		}
 		.FilterButton {
-			width: 0;
-			height: 50px;
-			border: solid black 3px
+			width: 12.5%;
+			height: 100%;
+			border: solid black 3px;
 		}
 	</style>
+	<script>
+		function hide(val) {
+for (var i = 0; i < document.getElementsByClassName(val).length; i++) {
+document.getElementsByClassName(val)[i].style.display = "none";
+}
+}
+function hideAll(...val) {
+for (var i = 0; i < arguments.length; i++) {
+jHide(arguments[i]);
+}
+}
+function show(val) {
+$("." + unAttribut).show();
+}
+function jHide(unAttribut) {
+$("." + unAttribut).hide();
+}
+	</script>
 	{{ include('pom_pom/filtreur.html.twig') }}
 	{{ include('pom_pom/tableau.html.twig') }}
 {% endblock %}

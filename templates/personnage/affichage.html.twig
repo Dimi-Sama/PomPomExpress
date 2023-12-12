@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="image-table">
+        {% for personnage in personnages %}
+            {% set idPersonnage = personnage.id %}
+            {% set nomPersonnage = personnage.nom %}
+            
+            <div class="img-container">
+                <a href="{{ path('app_personnage_affichage', {'variable': idPersonnage}) }}">
+                    <img src="{{ asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+	
+	<style>
+/* Style pour chaque image */
+	.img-container {
+		width: 100px; /* Remplacez par la largeur souhaitée pour chaque image */
+		height: 100px; /* Remplacez par la hauteur souhaitée pour chaque image */
+		
+		display: inline-block;
+
+		/* Espacement entre les images */
+		margin: 5px;
+		vertical-align: top; /* Permet d'aligner les images côte à côte */
+	}
+
+	/* Style pour le conteneur du tableau */
+	.image-table {
+		text-align: center; /* Assure que le conteneur s'étend au-delà des images flottantes */
+	}
+
+	</style>
+{% endblock %}

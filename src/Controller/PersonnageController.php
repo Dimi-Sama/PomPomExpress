@@ -21,7 +21,7 @@ class PersonnageController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
-
+    
     #[Route('/new', name: 'app_personnage_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -77,5 +77,12 @@ class PersonnageController extends AbstractController
         }
 
         return $this->redirectToRoute('app_personnage_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/affichage', name: 'app_personnage_affichage', methods: ['GET'])]
+    public function affichage(PersonnageRepository $personnageRepository): Response
+    {
+        return $this->render('personnage/affichage.html.twig', [
+            'personnages' => $personnageRepository->findAll(),
+        ]);
     }
 }

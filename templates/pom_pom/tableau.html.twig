@@ -1,6 +1,6 @@
 <div class="flex-container" style="width:100%;">
 	{% for personnage in personnages %}
-		<div class="charaFrame">
+		<div class="charaFrame {{personnage.attribut}}">
 			{% set nomPersonnage = personnage.nom %}
 			<div class="charaImage">
 				{% set imagePath = asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') %}

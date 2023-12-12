@@ -13,6 +13,7 @@
 
 		<!-- Bootstrap CSS v5.2.1 -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital, wght@0, 700;1, 700 &display=swap');
@@ -20,34 +21,34 @@
 				font-family: 'Roboto', sans-serif;
 			}
 		</style>
-
-		<body>
-
-			<header class="d-flex justify-content-center py-3 bg-dark">
-				<ul class="nav nav-pills">
-					<li class="nav-item ">
-						<a href="{{ path("app_voie_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Voies</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("app_personnage_index") }}" class="nav-link {% if app.request.get('_route') == 'app_personnage_index' %} active{% endif %}">Personnages</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("app_attribut_index") }}" class="nav-link {% if app.request.get('_route') == 'app_attribut_index' %} active{% endif %}">Attributs</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("app_normale_index") }}" class="nav-link {% if app.request.get('_route') == 'app_normale_index' %} active{% endif %}">Normales</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("app_talent_index") }}" class="nav-link {% if app.request.get('_route') == 'app_talent_index' %} active{% endif %}">Talents</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("index") }}" class="nav-link {% if app.request.get('_route') == 'app_talent_index' %} active{% endif %}">Accueil</a>
-					</li>
-				</ul>
-
-			</ul>
-		</body>
 	</head>
+	<body>
+
+		<header class="d-flex justify-content-center py-3 bg-dark">
+			<ul class="nav nav-pills">
+				<li class="nav-item ">
+					<a href="{{ path("app_voie_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Voies</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{{ path("app_personnage_index") }}" class="nav-link {% if app.request.get('_route') == 'app_personnage_index' %} active{% endif %}">Personnages</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{{ path("app_attribut_index") }}" class="nav-link {% if app.request.get('_route') == 'app_attribut_index' %} active{% endif %}">Attributs</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{{ path("app_normale_index") }}" class="nav-link {% if app.request.get('_route') == 'app_normale_index' %} active{% endif %}">Normales</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{{ path("app_talent_index") }}" class="nav-link {% if app.request.get('_route') == 'app_talent_index' %} active{% endif %}">Talents</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{{ path("index") }}" class="nav-link {% if app.request.get('_route') == 'app_talent_index' %} active{% endif %}">Accueil</a>
+				</li>
+			</ul>
+
+		</ul>
+	</body>
+
 </html></header><main>
 <div class="container"> {% block body %}{% endblock %}
 	</div>

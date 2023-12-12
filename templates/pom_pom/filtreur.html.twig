@@ -1,15 +1,13 @@
 <ul class="nav nav-pills FilterBar">
+	<li class="nav-item FilterButton">
+		<div class="tout " style="background-color:rgba(0,0,0,0)" onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');">
+			tout
+		</div>
+	</li>
 	{% for attribut in attributs %}
 		<li class="nav-item FilterButton">
-			<div class="attributs ">
-				Attribut-
-			</div>
-		</li>
-	{% endfor %}
-	{% for voie in voies %}
-		<li class="voies FilterButton">
-			<div>
-				voie-
+			<div class="" style="background-color:rgba(0,0,0,0)" onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
+				{{ attribut.Nom }}
 			</div>
 		</li>
 	{% endfor %}

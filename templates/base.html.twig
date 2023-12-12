@@ -17,26 +17,28 @@
 
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital, wght@0, 700;1, 700 &display=swap');
-			@import url('../font/spyagency3_2.ttf');
-			@import url('../font/spyagency3_2.woff');
+			@font-face {
+				font-family: 'SpyAgency';
+				src: url('../font/spyagency3_2.ttf') format('truetype');
+			}
 
 
 			body {
 				font-family: 'Roboto', sans-serif;
 			}
 			.container video {
-					position: absolute;
-					overflow: hidden;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					transition: 0.5s;
-					z-index : -1;
-					opacity: 1;
-					scale(1.1);
-					filter: blur(1.1px); /* Ajustez la valeur pour contrôler l'intensité du flou */
+				position: absolute;
+				overflow: hidden;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: 0.5s;
+				z-index: -1;
+				opacity: 1;
+				scale(1.1);
+				filter: blur(1.1px); /* Ajustez la valeur pour contrôler l'intensité du flou */
 			}
 		</style>
 	</head>
@@ -59,74 +61,54 @@
 							<a href="{{ path("public_personnage") }}" class="nav-link text-light {% if app.request.get('_route') == 'public_personnage' %} active{% endif %}">Personnage</a>
 						</li>
 						<li class="nav-item ">
-								<a href="{{ path("public_article") }}" class="nav-link text-light {% if app.request.get('_route') == 'public_article' %} active{% endif %}">Article</a>
-							</li>
-						</ul>
+							<a href="{{ path("public_article") }}" class="nav-link text-light {% if app.request.get('_route') == 'public_article' %} active{% endif %}">Article</a>
+						</li>
 					</ul>
+				</ul>
 
-					<div class="text-end">
-						{% if is_granted('ROLE_USER') %}
-							<a class="btn btn-outline-light me-2" href="{{ path('app_logout') }}">Logout</a>
-						{% else %}
-							<a class="btn btn-outline-light me-2" href="{{ path('app_login') }}">Login</a>
-							<a class="btn btn-warning" href="{{ path('app_register') }}">Register</a>
-						{% endif %}
-						{% if is_granted('ROLE_ADMIN') %}
-							<a class="btn btn-warning" href="{{ path('app_personnage_index') }}">Interface Admin</a>
-						{% endif %}
+				<div class="text-end">
+					{% if is_granted('ROLE_USER') %}
+						<a class="btn btn-outline-light me-2" href="{{ path('app_logout') }}">Logout</a>
+					{% else %}
+						<a class="btn btn-outline-light me-2" href="{{ path('app_login') }}">Login</a>
+						<a class="btn btn-warning" href="{{ path('app_register') }}">Register</a>
+					{% endif %}
+					{% if is_granted('ROLE_ADMIN') %}
+						<a class="btn btn-warning" href="{{ path('app_personnage_index') }}">Interface Admin</a>
+					{% endif %}
 
-					</div>
 				</div>
 			</div>
-
-		</header>
-
+		</div>
 	</body>
-	<main>
-		<div class="container">
-		    <video id ="video" src="../images/img/honkai-star-rail-desktop-wallpaperwaifu-com.mp4" muted loop autoplay></video>
+</html></header></body><main><div class="container">
+<video id="video" src="../images/img/honkai-star-rail-desktop-wallpaperwaifu-com.mp4" muted loop autoplay></video>
 
-		 {% block body %}{% endblock %}
-			</div>
-
-		</main>
-		<footer class=" fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top bg-dark" style=";">
-			<div class="col-md-4 d-flex align-items-center">
-				<a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
-					<svg class="bi" width="30" height="24">
-						<use xlink:href="#bootstrap"></use>
-					</svg>
-				</a>
-				<span class="mb-3 mb-md-0 text-white">© 2022 Company, Inc</span>
-			</div>
-
-			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-				<li class="ms-3">
-					<a class="text-white" href="#">
-						<svg class="bi" width="24" height="24">
-							<use xlink:href="#twitter"></use>
-						</svg>
-					</a>
-				</li>
-				<li class="ms-3">
-					<a class="text-white" href="#">
-						<svg class="bi" width="24" height="24">
-							<use xlink:href="#instagram"></use>
-						</svg>
-					</a>
-				</li>
-				<li class="ms-3">
-					<a class="text-white " href="#">
-						<svg class="bi" width="24" height="24">
-							<use xlink:href="#facebook"></use>
-						</svg>
-					</a>
-				</li>
-			</ul>
-		</footer>
-		<!-- Bootstrap JavaScript Libraries -->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-	</html>
-</body></html>
+{% block body %}{% endblock %}</div></main><footer class=" fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top bg-dark" style=";"><div class="col-md-4 d-flex align-items-center">
+<a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
+	<svg class="bi" width="30" height="24">
+		<use xlink:href="#bootstrap"></use>
+	</svg>
+</a>
+<span class="mb-3 mb-md-0 text-white">© 2022 Company, Inc</span></div><ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+<li class="ms-3">
+	<a class="text-white" href="#">
+		<svg class="bi" width="24" height="24">
+			<use xlink:href="#twitter"></use>
+		</svg>
+	</a>
+</li>
+<li class="ms-3">
+	<a class="text-white" href="#">
+		<svg class="bi" width="24" height="24">
+			<use xlink:href="#instagram"></use>
+		</svg>
+	</a>
+</li>
+<li class="ms-3">
+	<a class="text-white " href="#">
+		<svg class="bi" width="24" height="24">
+			<use xlink:href="#facebook"></use>
+		</svg>
+	</a>
+</li></ul></footer><!-- Bootstrap JavaScript Libraries --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script></html></body></html>

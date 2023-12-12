@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ultime{% endblock %}
+
+{% block body %}
+    <h1>Edit Ultime</h1>
+
+    {{ include('ultime/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ultime_index') }}">back to list</a>
+
+    {{ include('ultime/_delete_form.html.twig') }}
+{% endblock %}

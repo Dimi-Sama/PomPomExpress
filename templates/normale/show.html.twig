@@ -1,0 +1,30 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Normale{% endblock %}
+
+{% block body %}
+    <h1>Normale</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ normale.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ normale.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ normale.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_normale_index') }}">back to list</a>
+
+    <a href="{{ path('app_normale_edit', {'id': normale.id}) }}">edit</a>
+
+    {{ include('normale/_delete_form.html.twig') }}
+{% endblock %}

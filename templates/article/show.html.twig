@@ -8,20 +8,11 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
+                <th>{{ article.titre }}</th>
+                <th>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</th>
             </tr>
             <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
                 <td>{{ article.contenu }}</td>
-            </tr>
-            <tr>
-                <th>DateCrea</th>
-                <td>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>

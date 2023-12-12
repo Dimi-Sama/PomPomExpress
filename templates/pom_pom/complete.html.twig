@@ -7,7 +7,7 @@
 {% block body %}
 	<style>
 		.charaFrame {
-			display: inline-block !important;
+			display: inline-block;
 			width: 15%;
 			height: 30%;
 		}
@@ -33,21 +33,16 @@
 		}
 	</style>
 	<script>
-		function hide(val) {
-for (var i = 0; i < document.getElementsByClassName(val).length; i++) {
-document.getElementsByClassName(val)[i].style.display = "none";
-}
-}
-function hideAll(...val) {
+		function hideAll(...val) {
 for (var i = 0; i < arguments.length; i++) {
 jHide(arguments[i]);
 }
 }
 function show(val) {
-$("." + unAttribut).show();
+$("." + val).show();
 }
-function jHide(unAttribut) {
-$("." + unAttribut).hide();
+function jHide(val) {
+$("." + val).hide();
 }
 	</script>
 	{{ include('pom_pom/filtreur.html.twig') }}

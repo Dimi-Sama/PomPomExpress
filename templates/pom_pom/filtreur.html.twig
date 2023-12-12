@@ -1,6 +1,6 @@
 <ul class="nav nav-pills FilterBar">
 	<li class="nav-item FilterButton">
-		<div class="tout " style="background-color:rgba(0,0,0,0)" onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');">
+		<div class="tout " style="background-color:rgba(0,0,0,0)" onclick="{% for attribut in attributs %}show('{{ attribut.Nom }}');{% endfor %}">
 			tout
 		</div>
 	</li>

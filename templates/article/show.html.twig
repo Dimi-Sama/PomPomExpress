@@ -3,23 +3,62 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+    <h1>{{ article.titre }} </h1> 
+    <h2>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</h2>
+    <div class = "conteneur">
+    <div class = "contenu">
+    {{ article.contenu }}
+    </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ article.titre }}</th>
-                <th>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</th>
-            </tr>
-            <tr>
-                <td>{{ article.contenu }}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <button class="btn btn-success rounded-pill px-3" type="button">
     <a href="{{ path('app_article_index') }}">back to list</a>
+    </button>
 
+    <button class="btn btn-success rounded-pill px-3" type="button">
     <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+    </button>
 
+    
     {{ include('article/_delete_form.html.twig') }}
+    
+<style>
+/* Titre de l'article */
+h1 {
+    color: #333;
+    margin-bottom: 10%;
+    margin-right: 10%;
+    display: inline-block; /* Affiche le titre en ligne avec d'autres éléments */
+}
+
+/* Date de création */
+h2 {
+    color: #666;
+    display: inline-block; /* Affiche la date en ligne avec d'autres éléments */
+    
+}
+.conteneur {
+    margin: 0 auto;
+    background-color: #74992e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+.contenu {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    padding: 20px;
+    max-width: 100%; /* Le contenu ne dépassera pas la largeur de la boîte */
+    box-sizing: border-box; 
+     overflow: hidden;
+}
+
+/* Autres styles restants inchangés */
+/* ... */
+
+</style>
+
 {% endblock %}

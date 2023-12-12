@@ -1,13 +1,13 @@
 <ul class="nav nav-pills FilterBar">
 	<li class="nav-item FilterButton">
 		<div class="tout " style="background-color:rgba(0,0,0,0)" onclick="{% for attribut in attributs %}show('{{ attribut.Nom }}');{% endfor %}">
-			tout
+			<img style="width:25%" src="../../images/asset/jade.png" alt="attribut : jade stellaire">
 		</div>
 	</li>
 	{% for attribut in attributs %}
 		<li class="nav-item FilterButton">
 			<div class="" style="background-color:rgba(0,0,0,0)" onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
-				{{ attribut.Nom }}
+				<img style="width:25%" src="../../images/attribut/{{ attribut.nom }}.png" alt="attribut : {{ attribut.nom }}">
 			</div>
 		</li>
 	{% endfor %}

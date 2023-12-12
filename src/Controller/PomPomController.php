@@ -37,5 +37,4 @@ class PomPomController extends AbstractController
             'personnage' => $personnage,
         ]);
     }
-
 }

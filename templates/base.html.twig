@@ -46,11 +46,11 @@
 							{% if is_granted('ROLE_USER') %}
 								<a class="btn btn-outline-light me-2" href="{{ path('app_logout') }}">Logout</a>
 							{% else %}
-							{% if is_granted('ROLE_ADMIN') %}
-								<a class="btn btn-warning" href="{{ path('app_personnage_index') }}">Interface Admin</a>
-							{% endif %}
 								<a class="btn btn-outline-light me-2" href="{{ path('app_login') }}">Login</a>
 								<a class="btn btn-warning" href="{{ path('app_register') }}">Register</a>
+							{% endif %}
+							{% if is_granted('ROLE_ADMIN') %}
+								<a class="btn btn-warning" href="{{ path('app_personnage_index') }}">Interface Admin</a>
 							{% endif %}
 								
 							</div>

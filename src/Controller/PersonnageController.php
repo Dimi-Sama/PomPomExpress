@@ -41,7 +41,13 @@ class PersonnageController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    #[Route('/affichage', name: 'app_personnage_affichage', methods: ['GET'])]
+    public function affichage(PersonnageRepository $personnageRepository): Response
+    {
+        return $this->render('personnage/affichage.html.twig', [
+            'personnages' => $personnageRepository->findAll(),
+        ]);
+    }
     #[Route('/{id}', name: 'app_personnage_show', methods: ['GET'])]
     public function show(Personnage $personnage): Response
     {
@@ -78,11 +84,6 @@ class PersonnageController extends AbstractController
 
         return $this->redirectToRoute('app_personnage_index', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/affichage', name: 'app_personnage_affichage', methods: ['GET'])]
-    public function affichage(PersonnageRepository $personnageRepository): Response
-    {
-        return $this->render('personnage/affichage.html.twig', [
-            'personnages' => $personnageRepository->findAll(),
-        ]);
-    }
+
+
 }

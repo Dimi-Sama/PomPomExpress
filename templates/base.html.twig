@@ -23,39 +23,44 @@
 		</style>
 	</head>
 	<body>
+	<header class="p-3 bg-dark text-white">
 
-		<header class="d-flex justify-content-center py-3 bg-dark">
-			<ul class="nav nav-pills">
-				<li class="nav-item ">
-					<a href="{{ path("index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Index</a>
-				</li>
-				<li class="nav-item ">
-					<a href="{{ path("app_personnage_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Personnage</a>
-				</li>
-				<li class="nav-item ">
-					<a href="{{ path("app_voie_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Voie</a>
-				</li>
-				<li class="nav-item ">
-					<a href="{{ path("app_attribut_index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Attribut</a>
-				</li>
+				<div class="container">
+					<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+						<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+							<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+								<use xlink:href="#bootstrap"></use>
+							</svg>
+						</a>
 
-			<header class="d-flex justify-content-center py-3 bg-dark">
-				<ul class="nav nav-pills">
-					<li class="nav-item ">
-						<a href="{{ path("index") }}" class="nav-link {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Index</a>
-					</li>
-					<li class="nav-item ">
-						<a href="{{ path("public_personnage") }}" class="nav-link {% if app.request.get('_route') == 'public_personnage' %} active{% endif %}">Personnage</a>
-					</li>
+						<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+							<li>
+								<a href="{{ path("index") }}" class="nav-link text-light {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}">Index</a>
+							</li>
+							<li class="nav-item ">
+								<a href="{{ path("public_personnage") }}" class="nav-link text-light {% if app.request.get('_route') == 'public_personnage' %} active{% endif %}">Personnage</a>
+							</li>
+						</ul>
 
-				</ul>
+						<div class="text-end">
+							{% if is_granted('ROLE_USER') %}
+								<a class="btn btn-outline-light me-2" href="{{ path('app_logout') }}">Logout</a>
+							{% else %}
+							{% if is_granted('ROLE_ADMIN') %}
+								<a class="btn btn-warning" href="{{ path('app_personnage_index') }}">Interface Admin</a>
+							{% endif %}
+								<a class="btn btn-outline-light me-2" href="{{ path('app_login') }}">Login</a>
+								<a class="btn btn-warning" href="{{ path('app_register') }}">Register</a>
+							{% endif %}
+								
+							</div>
+						</div>
+					</div>
 
-			</ul>
+				</header>
 
-		</ul>
 	</body>
-
-</html></header><main>
+<main>
 <div class="container"> {% block body %}{% endblock %}
 	</div>
 

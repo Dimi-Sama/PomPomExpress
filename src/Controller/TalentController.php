@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/talent')]
+#[Route('/pompom/talent')]
 class TalentController extends AbstractController
 {
     #[Route('/', name: 'app_talent_index', methods: ['GET'])]

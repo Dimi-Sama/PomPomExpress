@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/voie')]
+#[Route('/pompom/voie')]
 class VoieController extends AbstractController
 {
     #[Route('/', name: 'app_voie_index', methods: ['GET'])]

@@ -20,7 +20,7 @@ class PomPomController extends AbstractController
         ]);
     }
 
-    #[Route('/personnage', name: 'public_personnage')]
+    #[Route('/wiki/personnage', name: 'public_personnage')]
     public function perso(PersonnageRepository $personnageRepository, AttributRepository $attributRepository, VoieRepository $voieRepository): Response
     {
         return $this->render('pom_pom/complete.html.twig', [
@@ -30,7 +30,7 @@ class PomPomController extends AbstractController
             'voies' => $voieRepository->findAll(),
         ]);
     }
-    #[Route('/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]
+    #[Route('/wiki/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]
     public function show(Personnage $personnage): Response
     {
         return $this->render('personnage/affichage.html.twig', [

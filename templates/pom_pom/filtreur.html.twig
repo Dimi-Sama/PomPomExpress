@@ -1,14 +1,9 @@
-<ul class="nav nav-pills FilterBar">
-	<li class="nav-item FilterButton">
-		<div class="tout " style="background-color:rgba(0,0,0,0)" onclick="{% for attribut in attributs %}show('{{ attribut.Nom }}');{% endfor %}">
-			<img style="width:25%" src="../../images/asset/jade.png" alt="attribut : jade stellaire">
-		</div>
-	</li>
+
+<div class="flex-containerr">
+	<img src="../../images/asset/jade.png" alt="attribut : jade stellaire" onclick="{% for attribut in attributs %}show('{{ attribut.Nom }}');{% endfor %}">
 	{% for attribut in attributs %}
-		<li class="nav-item FilterButton">
-			<div class="" style="background-color:rgba(0,0,0,0)" onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
-				<img style="width:25%" src="../../images/attribut/{{ attribut.nom }}.png" alt="attribut : {{ attribut.nom }}">
-			</div>
-		</li>
+	<img src="../../images/attribut/{{ attribut.nom }}.png" alt="attribut : {{ attribut.nom }} "onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
 	{% endfor %}
-</ul>
+
+</div>
+

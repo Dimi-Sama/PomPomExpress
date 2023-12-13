@@ -39,4 +39,28 @@
 			<td colspan="4">C'est un peu vide ici non? [Database error?]</td>
 		</div>
 
-	{% endfor %}
+
+					{% set imagePath = asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') %}
+				</div>
+				<img style="width:155px ; object-fit: cover; aspect-ratio: 1 / 1" src="..{{imagePath}}" alt="personnage : {{ personnage.nom }}">
+				<div>
+					<a>
+						<div class="charaName">
+							{{ personnage.nom }}
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div>
+					<td colspan="4">C'est un peu vide ici non? [Database error?]</td>
+				</div>
+
+			{% endfor %}
+			{% for allIds in inventairesPersonnage %}
+				<p style="color:white">
+					{{ allIds }}
+				</p>
+			{% else %}
+				<p>C'est un peu vide ici non? [Database error?]</p>
+
+			{% endfor %}

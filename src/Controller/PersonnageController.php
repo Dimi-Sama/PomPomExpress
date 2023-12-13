@@ -21,7 +21,7 @@ class PersonnageController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
-    
+
     #[Route('/new', name: 'app_personnage_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -48,6 +48,7 @@ class PersonnageController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
+
     #[Route('/{id}', name: 'app_personnage_show', methods: ['GET'])]
     public function show(Personnage $personnage): Response
     {
@@ -84,6 +85,5 @@ class PersonnageController extends AbstractController
 
         return $this->redirectToRoute('app_personnage_index', [], Response::HTTP_SEE_OTHER);
     }
-
-
+    #test
 }

@@ -2,9 +2,13 @@
 
 {% block body %}
 
-		<h1>Personnage</h1>
+	<h1>Personnage
+		<a href="{{ path("app_personnage_user_ajouter") }}?addCharacter={{ personnage.id }}" class="nav-link text-light {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}" style="">
+			[AJOUTER ❔]
+		</a>
+	</h1>
 
-    <table class="table">
+	<table class="table">
 		<div>
 			<tbody>
 				<tr>
@@ -16,56 +20,72 @@
 					<td>{{ personnage.etoile }}</td>
 				</tr>
 				<tr>
-				<th>Attribut</th>
+					<th>Attribut</th>
 					<td>{{ personnage.attribut }}</td>
 				</tr>
-				
+
 				<tr>
-				<th>Voie</th>
+					<th>Voie</th>
 					<td>{{ personnage.voie }}</td>
 				</tr>
 				<th>Ultime</th>
-					<table class="table">
-					<thead><tr><th>{{ personnage.ultime.nom }}</th></tr></thead>
-					<tbody><td>{{ personnage.ultime.description }}</td></tbody>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{{ personnage.ultime.nom }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td>{{ personnage.ultime.description }}</td>
+					</tbody>
 				</tr>
 				<th>Compétence</th>
-					<table class="table">
-					<thead><tr><th>{{ personnage.competence.nom }}</th></tr></thead>
-					<tbody><td>{{ personnage.competence.description }}</td></tbody>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{{ personnage.competence.nom }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td>{{ personnage.competence.description }}</td>
+					</tbody>
 				</tr>
 				<th>Talent</th>
-					<table class="table">
-					<thead><tr><th>{{ personnage.talent.nom }}</th></tr></thead>
-					<tbody><td>{{ personnage.talent.description }}</td></tbody>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{{ personnage.talent.nom }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td>{{ personnage.talent.description }}</td>
+					</tbody>
 				</tr>
 				<th>Normale</th>
-					<table class="table">
-					<thead><tr><th>{{ personnage.normale.nom }}</th></tr></thead>
-					<tbody><td>{{ personnage.normale.description }}</td></tbody>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{{ personnage.normale.nom }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td>{{ personnage.normale.description }}</td>
+					</tbody>
 				</tr>
-        
 
-
-				
 
 			</tbody>
 		</div>
-    </table>
+	</table>
 
-            {% set idPersonnage = personnage.id %}
-            {% set nomPersonnage = personnage.nom %}
-            
-            <div class="img-container">
+	{% set idPersonnage = personnage.id %}
+	{% set nomPersonnage = personnage.nom %}
 
-                    <img src="{{ asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">
-                </a>
-   			</div>
+	<div class="img-container">
 
-	
-	<style>
-/* Style pour chaque image */
+		<img src="{{ asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">
+	</a>
+</div>
 
 
-	</style>
-{% endblock %}
+<style>/* Style pour chaque image */</style>{% endblock %}

@@ -46,6 +46,7 @@ class PersonnageController extends AbstractController
     {
         return $this->render('personnage/affichage.html.twig', [
             'personnages' => $personnageRepository->findAll(),
+
         ]);
     }
 

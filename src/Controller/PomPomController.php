@@ -54,8 +54,13 @@ class PomPomController extends AbstractController
     #[Route('/wiki/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]
     public function show(Personnage $personnage): Response
     {
+        $inventoryCharacter = "";
+        if (isset($_COOKIE["UserOwnedCharacters"])) {
+            $inventoryCharacter = unserialize($_COOKIE["UserOwnedCharacters"]);
+        }
         return $this->render('personnage/affichage.html.twig', [
             'personnage' => $personnage,
+            'inventairesPersonnage' => $inventoryCharacter
         ]);
     }
     #[Route('/wiki/ajouterDansInventraire', name: 'app_personnage_user_ajouter', methods: ['GET', 'POST'])]
@@ -70,10 +75,35 @@ class PomPomController extends AbstractController
                 setcookie("UserOwnedCharacters", serialize($getOwnedCharacter));
             }
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('public_personnage');
         } else {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('public_personnage');
         }
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('public_personnage');
+    }
+    #[Route('/wiki/SupprimerDansInventraire', name: 'app_personnage_user_supprimer', methods: ['GET', 'POST'])]
+    public function deleteToAccount(): Response
+    {
+        if (isset($_GET["addCharacter"])) {
+            if (!isset($_COOKIE["UserOwnedCharacters"])) {
+                setcookie("UserOwnedCharacters", serialize([]));
+            } else {
+                $getOwnedCharacter = unserialize($_COOKIE["UserOwnedCharacters"]);
+                $i = 0;
+                foreach ($getOwnedCharacter as $oneOwnedCharacter) {
+                    if ($oneOwnedCharacter != $_GET["addCharacter"]) {
+                        $i++;
+                    } else {
+                        unset($getOwnedCharacter[$i]);
+                    }
+                }
+                setcookie("UserOwnedCharacters", serialize($getOwnedCharacter));
+            }
+
+            return $this->redirectToRoute('public_personnage');
+        } else {
+            return $this->redirectToRoute('public_personnage');
+        }
+        return $this->redirectToRoute('public_personnage');
     }
 }

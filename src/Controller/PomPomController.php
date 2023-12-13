@@ -25,11 +25,16 @@ class PomPomController extends AbstractController
     #[Route('/wiki/personnage', name: 'public_personnage')]
     public function perso(PersonnageRepository $personnageRepository, AttributRepository $attributRepository, VoieRepository $voieRepository): Response
     {
+        $inventoryCharacter = "";
+        if (isset($_COOKIE["UserOwnedCharacters"])) {
+            $inventoryCharacter = unserialize($_COOKIE["UserOwnedCharacters"]);
+        }
         return $this->render('pom_pom/complete.html.twig', [
             'controller_name' => 'PomPomController',
             'personnages' => $personnageRepository->findAll(),
             'attributs' => $attributRepository->findAll(),
             'voies' => $voieRepository->findAll(),
+            'inventairesPersonnage' => $inventoryCharacter
         ]);
     }
     #[Route('wiki/article', name: 'public_article', methods: ['GET'])]
@@ -52,5 +57,23 @@ class PomPomController extends AbstractController
         return $this->render('personnage/affichage.html.twig', [
             'personnage' => $personnage,
         ]);
+    }
+    #[Route('/wiki/ajouterDansInventraire', name: 'app_personnage_user_ajouter', methods: ['GET', 'POST'])]
+    public function addToAccount(): Response
+    {
+        if (isset($_GET["addCharacter"])) {
+            if (!isset($_COOKIE["UserOwnedCharacters"])) {
+                setcookie("UserOwnedCharacters", serialize([]));
+            } else {
+                $getOwnedCharacter = unserialize($_COOKIE["UserOwnedCharacters"]);
+                array_push($getOwnedCharacter, $_GET["addCharacter"]);
+                setcookie("UserOwnedCharacters", serialize($getOwnedCharacter));
+            }
+
+            return $this->redirectToRoute('index');
+        } else {
+            return $this->redirectToRoute('index');
+        }
+        return $this->redirectToRoute('index');
     }
 }

@@ -5,7 +5,23 @@
 	bienvenue dans POM POM EXPRESS
 {% endblock %}
 {% block body %}
+	<div class='titleT'>
+		<h1>Personnages</h1>
+	</div>
+
 	<style>
+
+		.titleT {
+			text-align: center;
+			font-family: 'SpyAgency';
+			font-style: italic;
+		}
+		.titleT h1 {
+			font-weight: 400;
+			font-size: 5em;
+			color: #FFFFFF;
+			-webkit-text-stroke: 3px black;
+		}
 
 		.charaFrame {
 			display: flex;
@@ -34,7 +50,6 @@
 			border: solid black 3px;
 		}
 		.flex-containerr {
-			margin-top: 2em;
 
 			display: flex;
 			flex-direction: row;
@@ -75,6 +90,7 @@
 			text-align: center;
 			-webkit-text-stroke: 1px black;
 			margin-top: 2em;
+			transition-duration: 0.5s
 		}
 		.charaStars {
 			background: #0000009c;

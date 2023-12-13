@@ -5,7 +5,7 @@
 {% block body %}
     <div class="article-container">
         <h1 class="article-title">{{ article.titre }}</h1> 
-        <h2 class="article-date">{{ article.dateCrea ? article.dateCrea|date('d F Y à H:i') : '' }}</h2>  
+        <h2 class="article-date">Publié le {{ dateFormat }}</h2>  
         <div class="conteneur">
             <div class="article-container">
                 <div class="contenu">{{ article.contenu }}</div>
@@ -14,34 +14,11 @@
     </div>  
    
     <a href="{{ path('app_article_index') }}" class="btn btn-success rounded-pill px-3">Back to List</a>
-    <a href="{{ path('app_commentaire_new') }}" class="btn btn-success rounded-pill px-3">Ajout de commentaire</a>
-
-    
-    <button onclick="loadCommentForm()">test ajout commentaire</button>
 
     <div id="commentFormContainer">
         <!-- Le contenu du formulaire de commentaire sera chargé ici -->
+     {{ include('commentaire/_form.html.twig') }}
     </div>
-
-    <script>
-        function loadCommentForm() {
-            var commentFormContainer = document.getElementById("commentFormContainer");
-            var xhr = new XMLHttpRequest();
-            
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    commentFormContainer.innerHTML = xhr.responseText;
-                }
-            };
-
-            xhr.open("GET", "/commentaire/new ", true);
-            xhr.send();
-        }
-    </script>
-    
-    
-    
-    
     
     {% for com in article.Commentaires %}
     <div class ="commentaire">

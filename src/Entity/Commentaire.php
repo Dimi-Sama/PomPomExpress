@@ -25,6 +25,10 @@ class Commentaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
 
+    public function __toString(){
+        return $this->contenu;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

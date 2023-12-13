@@ -13,8 +13,16 @@ class CommentaireType extends AbstractType
     {
         $builder
             ->add('contenu')
-            ->add('utilisateur')
-            ->add('article')
+            ->add('utilisateur', null, [
+                'data' => $options['utilisateur'], // Passer  l'utilisateur ici
+                'label' => false,
+                'attr' => ['style' => 'display: none;']
+            ])
+            ->add('article', null, [
+                'data' => $options['article'], // Passer l'ID de l'article ici
+                'label' => false,
+                'attr' => ['style' => 'display: none;']
+            ])
         ;
     }
 
@@ -22,6 +30,8 @@ class CommentaireType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Commentaire::class,
+            'utilisateur' => null, // Définir une option pour l'utilisateur
+            'article' => null, // Définir une option pour l'article
         ]);
     }
 }

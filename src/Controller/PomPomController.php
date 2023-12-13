@@ -2,15 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use IntlDateFormatter;
+use App\Entity\Personnage;
+use App\Entity\Commentaire;
+use App\Form\CommentaireType;
+use App\Repository\VoieRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\AttributRepository;
 use App\Repository\PersonnageRepository;
-use App\Entity\Article;
-use App\Entity\Personnage;
-use App\Repository\VoieRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PomPomController extends AbstractController
 {
@@ -37,18 +42,36 @@ class PomPomController extends AbstractController
             'inventairesPersonnage' => $inventoryCharacter
         ]);
     }
-    #[Route('wiki/article', name: 'public_article', methods: ['GET'])]
+    #[Route('blog/article', name: 'public_article', methods: ['GET'])]
     public function article(ArticleRepository $articleRepository): Response
     {
         return $this->render('pom_pom/article.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
     }
-    #[Route('wiki/article/{id}', name: 'public_article_show', methods: ['GET'])]
-    public function showarticle(Article $article): Response
+    #[Route('blog/article/{id}', name: 'public_article_show', methods: ['GET','POST'])]
+    public function showarticle(Article $article,Request $request, EntityManagerInterface $entityManager): Response
     {
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire, [
+            'utilisateur' => $this->getUser(), // Passer l'ID de l'utilisateur actuel
+            'article' => $article, // Passer l'ID de l'article en cours
+        ]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('public_article_show', ['id'=> $article->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+
+       $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+
         return $this->render('pom_pom/article_show.html.twig', [
             'article' => $article,
+            'form' => $form,
+            'dateFormat' => $formatter->format($article->getDateCrea())
         ]);
     }
     #[Route('/wiki/personnage/{id}', name: 'app_personnage_affichage', methods: ['GET', 'POST'])]

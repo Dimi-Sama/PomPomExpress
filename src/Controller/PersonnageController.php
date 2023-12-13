@@ -21,7 +21,25 @@ class PersonnageController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
+    #[Route('/ajouterDansInventraire', name: 'app_personnage_user_ajouter', methods: ['POST'])]
+    public function addToAccount(): Response
+    {
+        if (isset($_GET["addCharacter"])) {
+            if (!isset($_COOKIE["UserOwnedCharacters"])) {
+                setcookie("UserOwnedCharacters", []);
+            } else {
+                $getOwnedCharacter = $_COOKIE["UserOwnedCharacters"];
+                array_push($getOwnedCharacter, $_GET["addCharacter"]);
+                setcookie("UserOwnedCharacters", $getOwnedCharacter);
+            }
 
+            return $this->redirectToRoute('index?sucess=addedcharacter');
+        } else {
+            return $this->redirectToRoute('index?failure=addedcharacter');
+        }
+        return $this->redirectToRoute('index?failure=missed');
+    }
+    
     #[Route('/new', name: 'app_personnage_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -48,24 +66,9 @@ class PersonnageController extends AbstractController
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
-    #[Route('/ajouterDansInventraire', name: 'app_personnage_user_ajouter', methods: ['POST'])]
-    public function addToAccount(): Response
-    {
-        if (isset($_GET["addCharacter"])) {
-            if (!isset($_COOKIE["UserOwnedCharacters"])) {
-                setcookie("UserOwnedCharacters", []);
-            } else {
-                $getOwnedCharacter = $_COOKIE["UserOwnedCharacters"];
-                array_push($getOwnedCharacter, $_GET["addCharacter"]);
-                setcookie("UserOwnedCharacters", $getOwnedCharacter);
-            }
 
-            return $this->redirectToRoute('index?sucess=addedcharacter');
-        } else {
-            return $this->redirectToRoute('index?failure=addedcharacter');
-        }
-        return $this->redirectToRoute('index?failure=missed');
-    }
+
+
     #[Route('/{id}', name: 'app_personnage_show', methods: ['GET'])]
     public function show(Personnage $personnage): Response
     {

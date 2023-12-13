@@ -3,20 +3,98 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+    <div class="article-container">
+        <h1 class="article-title">{{ article.titre }}</h1> 
+        <h2 class="article-date">{{ article.dateCrea ? article.dateCrea|date('d F Y à H:i') : '' }}</h2>  
+        <div class="conteneur">
+            <div class="article-container">
+                <div class="contenu">{{ article.contenu }}</div>
+            </div>
+        </div>
+    </div>  
+   
+    <a href="{{ path('app_article_index') }}" class="btn btn-success rounded-pill px-3">Back to List</a>
+    <a href="{{ path('app_commentaire_new') }}" class="btn btn-success rounded-pill px-3">Ajout de commentaire</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ article.titre }}</th>
-                <th>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</th>
-            </tr>
-            <tr>
-                <td>{{ article.contenu }}</td>
-            </tr>
-        </tbody>
-    </table>
+    
+    <button onclick="loadCommentForm()">test ajout commentaire</button>
 
-    <a href="{{ path('public_article') }}">back to list</a>
+    <div id="commentFormContainer">
+        <!-- Le contenu du formulaire de commentaire sera chargé ici -->
+    </div>
 
+    <script>
+        function loadCommentForm() {
+            var commentFormContainer = document.getElementById("commentFormContainer");
+            var xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    commentFormContainer.innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.open("GET", "/commentaire/new ", true);
+            xhr.send();
+        }
+    </script>
+    
+    
+    
+    
+    
+    {% for com in article.Commentaires %}
+    <div class ="commentaire">
+
+        <div class="utilisateur">{{com.utilisateur}}</div>
+        <div class ="commentaire">{{com.contenu}}</div>
+    </div>  
+    {% endfor %}
+        
+
+<style>
+h1 {
+    color: #ccc;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    display: inline-block;
+}
+h2 {
+    font-size: 150%;
+    color: #ccc;
+    display: inline-block;
+    
+}
+.contenu {
+    font-size: 110%;
+    color: #fff;
+
+    
+}
+.utilisateur {
+    font-size: 130%;
+    color: #ff8c00;
+
+    
+}
+.article-container {
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    padding: 20px;
+    margin-top: 2%;
+    background-color: rgba(33, 97, 140, 0.8);
+    margin-bottom: 2%;
+    
+}
+.commentaire {
+    border: 1px solid #ccc;
+    border-radius: 10px; /* ajustez la valeur selon vos préférences */
+    padding: 20px;
+    margin-top: 2%;
+    background-color: rgba(39, 174, 96, 0.8);
+    margin-bottom: 2%;
+    color: #fff;
+    
+}
+</style>
 {% endblock %}

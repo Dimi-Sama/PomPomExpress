@@ -139,6 +139,43 @@ function jHide(val) {
 $("." + val).hide();
 }
 	</script>
+	<script>
+		{% set numberOfLines = 0 %}
+{% for allIds in inventairesPersonnage %}
+{% set numberOfLines = numberOfLines + 1 %}
+{% endfor %}
+// first loop so find out how much lines for json file ↑
+const jsonData = {
+"Characters": [
+{% for allIds in inventairesPersonnage %}
+{% if numberOfLines - 1 == 0 %}
+{% set numberOfLines = NumberOfLines - 1 %}
+{id: "{{ allIds }}"}
+{% else %}
+{
+id: "{{ allIds }}"
+},{% endif %}
+{% else %}
+id : "0"
+// second loop so find out to write json file ↑
+{% endfor %}
+// case empty but function still executed ↑
+]
+};
+const e = document.getElementById('json');
+e.innerHTML = JSON.stringify(jsonData);
+
+function download(content, fileName, contentType) {
+const a = document.createElement("a");
+const file = new Blob([content], {type: contentType});
+a.href = URL.createObjectURL(file);
+a.download = fileName;
+a.click();
+}
+function onDownload() {
+download(JSON.stringify(jsonData), "yourfile.json", "text/plain");
+}
+	</script>
 	{{ include('pom_pom/filtreur.html.twig') }}
 	{{ include('pom_pom/tableau.html.twig') }}
 {% endblock %}

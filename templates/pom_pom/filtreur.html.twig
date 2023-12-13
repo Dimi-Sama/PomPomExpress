@@ -1,9 +1,7 @@
-
 <div class="flex-containerr">
 	<img src="../../images/asset/jade.png" alt="attribut : jade stellaire" onclick="{% for attribut in attributs %}show('{{ attribut.Nom }}');{% endfor %}">
 	{% for attribut in attributs %}
-	<img src="../../images/attribut/{{ attribut.nom }}.png" alt="attribut : {{ attribut.nom }} "onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
+		<img src="../../images/attribut/{{ attribut.nom }}.png" alt="attribut : {{ attribut.nom }} " onclick="hideAll('Imaginaire','Quantique','Physique','Glace','Feu','Foudre','Vent');show('{{ attribut.Nom }}')">
 	{% endfor %}
 
 </div>
-

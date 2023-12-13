@@ -5,16 +5,34 @@
 	bienvenue dans POM POM EXPRESS
 {% endblock %}
 {% block body %}
+	<div class='titleT'>
+		<h1>Personnages</h1>
+	</div>
+
 	<style>
+
+		.titleT {
+			text-align: center;
+			font-family: 'SpyAgency';
+			font-style: italic;
+		}
+		.titleT h1 {
+			font-weight: 400;
+			font-size: 5em;
+			color: #FFFFFF;
+			-webkit-text-stroke: 3px black;
+		}
+
 		.charaFrame {
-			display: inline-block;
-			width: 15%;
-			height: 30%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			color: white;
+			border-radius: 10px;
+			height: 100%;
 		}
 		.charaImage {
-			overflow: hidden;
-			height: 70%;
-			display: inherit;
+			border-radius: 10px;
 		}
 		.charaName {
 			width: 100%;
@@ -32,31 +50,81 @@
 			border: solid black 3px;
 		}
 		.flex-containerr {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: normal;
-  align-content: stretch;
-  background: #00000073;
-  border-radius: 30px;
-border: 5px solid #ffc10785;
-	transition-duration: 1s;
+
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-around;
+			align-items: normal;
+			align-content: stretch;
+			background: #00000073;
+			border-radius: 30px;
+			border: 5px solid #ffc10785;
+			transition-duration: 1s;
 
 
+		}
+		.flex-containerr img {
+			aspect-ratio: 1 / 1;
+			width: 5%;
+			transition-duration: 1s;
 
-}
-.flex-containerr img{
-	aspect-ratio:1/1;
-	width: 5%;
-	transition-duration: 1s;
-
-}
-.flex-containerr img:hover{
-	background: #ffc107bd;
-	border-radius: 50px;
-	transition-duration: 1s;
-}
+		}
+		.flex-containerr img:hover {
+			background: #ffc107bd;
+			border-radius: 50px;
+			transition-duration: 1s
+		}
+		#persoT {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 2em;
+		}
+		#persoT a {
+			width: 12%;
+			text-decoration: none;
+			font-size: 1.1em;
+			font-family: SpyAgency;
+			text-align: center;
+			-webkit-text-stroke: 1px black;
+			margin-top: 2em;
+			transition-duration: 0.5s
+		}
+		.charaStars {
+			background: #0000009c;
+			margin-bottom: 0.5em;
+			border-radius: 15px;
+		}
+		.charaFrame.Glace {
+			background: rgb(2, 0, 36);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,191,255,1) 90%);
+		}
+		.charaFrame.Imaginaire {
+			background: rgb(2, 0, 36);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,233,0,1) 90%);
+		}
+		.charaFrame.Quantique {
+			background: rgb(2, 0, 36);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(87,59,236,1) 90%);
+		}
+		.charaFrame.Physique {
+			background: rgb(0, 0, 0);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 90%);
+		}
+		.charaFrame.Feu {
+			background: rgb(36, 0, 0);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,21,21,1) 90%);
+		}
+		.charaFrame.Foudre {
+			background: rgb(36, 0, 0);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(198,41,159,1) 90%);
+		}
+		.charaFrame.Vent {
+			background: rgb(36, 0, 0);
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(8,177,0,1) 90%);
+		}
 	</style>
 	<script>
 		function hideAll(...val) {

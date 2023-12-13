@@ -64,10 +64,9 @@ class PersonnageController extends AbstractController
     {
         return $this->render('personnage/affichage.html.twig', [
             'personnages' => $personnageRepository->findAll(),
+
         ]);
     }
-
-
 
     #[Route('/{id}', name: 'app_personnage_show', methods: ['GET'])]
     public function show(Personnage $personnage): Response
@@ -107,4 +106,3 @@ class PersonnageController extends AbstractController
     }
     #test
 }
-

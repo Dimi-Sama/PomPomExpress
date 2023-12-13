@@ -3,9 +3,29 @@
 {% block body %}
 
 	<h1>Personnage
-		<a href="{{ path("app_personnage_user_ajouter") }}?addCharacter={{ personnage.id }}" class="nav-link text-light {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}" style="">
-			[AJOUTER ❔]
-		</a>
+		{% if is_granted('ROLE_USER') %}
+			{% set foundSame = 0 %}
+			{% for allIds in inventairesPersonnage %}
+				{% if allIds == personnage.id %}
+					<a href="{{ path("app_personnage_user_supprimer") }}?addCharacter={{ personnage.id }}" class="nav-link text-light {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}" style="">
+						[RETIRER ❔]
+
+						{% set foundSame = 1 %}
+					</a>
+					{% else %}
+				{% endif %}
+				{% else %}
+
+			{% endfor %}
+			{% if foundSame == 0 %}
+				<a href="{{ path("app_personnage_user_ajouter") }}?addCharacter={{ personnage.id }}" class="nav-link text-light {% if app.request.get('_route') == 'app_voie_index' %} active{% endif %}" style="">
+					[AJOUTER ❔]
+				</a>
+			{% endif %}
+
+		{% else %}
+			[Connecter vous pour gérer vos personnage]
+		{% endif %}
 	</h1>
 
 	<table class="table">

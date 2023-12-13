@@ -1,22 +1,39 @@
-<div class="flex-container" style="width:100%;">
+<div id='persoT' class="flex-container">
 	{% for personnage in personnages %}
-		<div class="charaFrame {{personnage.attribut}}">
-			{% set nomPersonnage = personnage.nom %}
+	{% set nomPersonnage = personnage.nom %}
 			{% set idPersonnage = personnage.id %}
-			<a href="{{ path('app_personnage_affichage', {'id': idPersonnage}) }}">
+	<a href="{{ path('app_personnage_affichage', {'id': idPersonnage}) }}">
+		<div class="charaFrame {{personnage.attribut}}">
+
+		
+
+		
+			
+			
 			<div class="charaImage">
-			
-			
+		
 				{% set imagePath = asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') %}
-			</div>
 			<img style="width:155px ; object-fit: cover; aspect-ratio: 1 / 1" src="..{{imagePath}}" alt="personnage : {{ personnage.nom }}">
+
+			</div>
 			<div>
-			<a>
 				<div class="charaName">
-					{{ personnage.nom }}
+					{{ personnage.nom }} 
 				</div>
 			</div>
+			<div class="charaStars">
+
+		{% if personnage.etoile == 5 %}
+
+			<img style="width: 120px;" src="../images/etoile/5.png" alt="5 etoiles">
+		{% else %}
+			<img style="width: 120px;" src="../images/etoile/4.png" alt="4 etoiles">
+		{% endif %}
+
 		</div>
+		</div>
+	</a>
+	
 	{% else %}
 		<div>
 			<td colspan="4">C'est un peu vide ici non? [Database error?]</td>

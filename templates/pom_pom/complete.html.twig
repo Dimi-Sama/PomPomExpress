@@ -7,14 +7,16 @@
 {% block body %}
 	<style>
 		.charaFrame {
-			display: inline-block;
-			width: 15%;
-			height: 30%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			color: white;
+			background: cadetblue;
+			border-radius: 10px;
+			height: 100%;
 		}
 		.charaImage {
-			overflow: hidden;
-			height: 70%;
-			display: inherit;
+			border-radius: 10px;
 		}
 		.charaName {
 			width: 100%;
@@ -32,31 +34,53 @@
 			border: solid black 3px;
 		}
 		.flex-containerr {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: normal;
-  align-content: stretch;
-  background: #00000073;
-  border-radius: 30px;
-border: 5px solid #ffc10785;
-	transition-duration: 1s;
+			margin-top: 2em;
+
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-around;
+			align-items: normal;
+			align-content: stretch;
+			background: #00000073;
+			border-radius: 30px;
+			border: 5px solid #ffc10785;
+			transition-duration: 1s;
 
 
+		}
+		.flex-containerr img {
+			aspect-ratio: 1 / 1;
+			width: 5%;
+			transition-duration: 1s;
 
-}
-.flex-containerr img{
-	aspect-ratio:1/1;
-	width: 5%;
-	transition-duration: 1s;
-
-}
-.flex-containerr img:hover{
-	background: #ffc107bd;
-	border-radius: 50px;
-	transition-duration: 1s;
-}
+		}
+		.flex-containerr img:hover {
+			background: #ffc107bd;
+			border-radius: 50px;
+			transition-duration: 1s
+		}
+		#persoT {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 2em;
+		}
+		#persoT a {
+			width: 12%;
+			text-decoration: none;
+			font-size: 1.1em;
+			font-family: SpyAgency;
+			text-align: center;
+			-webkit-text-stroke: 1px black;
+			margin-top: 2em;
+		}
+		.charaStars {
+			background: #0000009c;
+			margin-bottom: 0.5em;
+			border-radius: 15px;
+		}
 	</style>
 	<script>
 		function hideAll(...val) {

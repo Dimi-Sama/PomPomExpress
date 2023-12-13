@@ -102,23 +102,6 @@ class PersonnageController extends AbstractController
 
         return $this->redirectToRoute('app_personnage_index', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/ajouterDansInventraire', name: 'app_personnage_user_ajouter', methods: ['POST'])]
-    public function addToAccount(): Response
-    {
-        if (isset($_GET["addCharacter"])) {
-            if (!isset($_COOKIE["UserOwnedCharacters"])) {
-                setcookie("UserOwnedCharacters", []);
-            } else {
-                $getOwnedCharacter = $_COOKIE["UserOwnedCharacters"];
-                array_push($getOwnedCharacter, $_GET["addCharacter"]);
-                setcookie("UserOwnedCharacters", $getOwnedCharacter);
-            }
-
-            return $this->redirectToRoute('index?sucess=addedcharacter');
-        } else {
-            return $this->redirectToRoute('index?failure=addedcharacter');
-        }
-        return $this->redirectToRoute('index?failure=missed');
-    }
+    #test
 }
 

@@ -1,48 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article
-{% endblock %}
-{% block vid %}
-	"../../images/vid/silver-wolf-honkai.mp4"
-{% endblock %}
+{% block title %}Article{% endblock %}
+{% block vid %}"../../images/vid/silver-wolf-honkai.mp4"{% endblock %}
 {% block body %}
 
-	<style>
-		.container video {
-			scale: 1.2;
-			right: 0;
-			margin-left: 5em;
+<style>
+
+.titreArticle {
+			font-family: 'SpyAgency';
+			font-weight: 400;
+			font-size: 3em;
+			color: #FFFFFF;
+			-webkit-text-stroke: 3px #6800ff;
 		}
-	</style>
-	<h1>Article Disponible</h1>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Titre</th>
-				<th>Contenu</th>
-				<th>DateCrea</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for article in articles %}
-				<tr>
-					<td>{{ article.id }}</td>
-					<td>{{ article.titre }}</td>
-					<td>{{ article.contenu }}</td>
-					<td>{{ article.dateCrea ? article.dateCrea|date('Y-m-d H:i:s') : '' }}</td>
-					<td>
-						<a href="{{ path('public_article_show', {'id': article.id}) }}">Infos</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="5">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 1.5em auto 0;
+			text-align: center;
+			background: #000000d6;
+			border-radius: 20px;
+			color: white;
+			
+		}
+    /* Ajoutez ici les styles CSS spécifiques à cette page si nécessaire */
+    .container video {
+        scale: 1.2;
+        right: 0;
+        margin-left: 5em;
+    }
+	.container a{
+		text-decoration: none !important;
+			color: white;
 
+	}
+
+    .news-content {
+        display: flex;
+        margin-top: 2em;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .news {
+        background: #00000060;
+        border-radius: 20px;
+        width: 99%;
+        align-items: center;
+        display: flex;
+        align-content: flex-start;
+        margin-bottom: 20px;
+        background-color: #1c1b2394;
+    }
+
+
+    .news img {
+        width: 200px;
+        border-radius: 10px;
+        aspect-ratio: 16 / 9;
+    }
+</style>
+
+<h1 class='titreArticle'>Article Disponible</h1>
+<div class="news-content">
+{% for article in articles %}
+<a href="{{ path('public_article_show', {'id': article.id}) }}">
+        <div class="news">
+		
+		<div>
+			<img src="https://picsum.photos/id/237/1280/720?random=1">
+        </div>
+			<h4>{{ article.titre }}</h4>
+        </div>
+ </a>
+        
+
+{% else %}
+    <p>No records found</p>
+{% endfor %}
+</div>
 {% endblock %}

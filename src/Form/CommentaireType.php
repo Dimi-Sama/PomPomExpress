@@ -12,7 +12,11 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('contenu')
+            ->add('contenu',null,[
+                'label' => false,
+                'attr' => ['placeholder' => "Saisissez votre commentaire ici"]
+                
+            ])
             ->add('utilisateur', null, [
                 'data' => $options['utilisateur'], // Passer  l'utilisateur ici
                 'label' => false,

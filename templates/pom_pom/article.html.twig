@@ -64,24 +64,40 @@
         border-radius: 10px;
         aspect-ratio: 16 / 9;
     }
+    .pagination{
+        gap: 1em;
+        background-color: #1c1b2394;
+        margin: 0.5em;
+        border-radius: 10px;
+
+    }
+    .pagination span:hover{
+        background-color: #6800ff;
+        border-radius:15px;
+        font-size:1.3em;
+        transition-duration: 0.5s;
+    }
 </style>
 
 <h1 class='titreArticle'>Article Disponible</h1>
 <div class="news-content">
-{% for article in articles %}
-<a href="{{ path('public_article_show', {'id': article.id}) }}">
-        <div class="news">
-		
-		<div>
-			<img src="https://picsum.photos/id/237/1280/720?random=1">
-        </div>
-			<h4>{{ article.titre }}</h4>
-        </div>
- </a>
-        
+    {% for article in pagination %}
+        <a href="{{ path('public_article_show', {'id': article.id}) }}">
+            <div class="news">
+                <div>
+                    <img src="https://picsum.photos/id/237/1280/720?random=1">
+                </div>
+                <h4>{{ article.titre }}</h4>
+            </div>
+        </a>
+    {% else %}
+        <p>No records found</p>
+    {% endfor %}
+</div>
 
-{% else %}
-    <p>No records found</p>
-{% endfor %}
+<div class="pagination">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
 </div>
 {% endblock %}

@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
 use IntlDateFormatter;
+use App\Entity\Article;
 use App\Entity\Personnage;
 use App\Entity\Commentaire;
 use App\Form\CommentaireType;
@@ -12,6 +12,7 @@ use App\Repository\ArticleRepository;
 use App\Repository\AttributRepository;
 use App\Repository\PersonnageRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,15 +43,23 @@ class PomPomController extends AbstractController
             'inventairesPersonnage' => $inventoryCharacter
         ]);
     }
-    #[Route('blog/article', name: 'public_article', methods: ['GET'])]
-    public function article(ArticleRepository $articleRepository): Response
+    #[Route('/blog/article', name: 'public_article', methods: ['GET'])]
+    public function article(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $articles = $articleRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $articles,
+            $request->query->getInt('page', 1), // Récupère le numéro de la page dans l'URL, 1 par défaut
+            10 // Nombre d'articles par page
+        );
+
         return $this->render('pom_pom/article.html.twig', [
-            'articles' => $articleRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
-    #[Route('blog/article/{id}', name: 'public_article_show', methods: ['GET','POST'])]
-    public function showarticle(Article $article,Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('blog/article/{id}', name: 'public_article_show', methods: ['GET', 'POST'])]
+    public function showarticle(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire, [
@@ -62,11 +71,11 @@ class PomPomController extends AbstractController
             $entityManager->persist($commentaire);
             $entityManager->flush();
 
-            return $this->redirectToRoute('public_article_show', ['id'=> $article->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('public_article_show', ['id' => $article->getId()], Response::HTTP_SEE_OTHER);
         }
 
 
-       $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+        $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
 
         return $this->render('pom_pom/article_show.html.twig', [
             'article' => $article,

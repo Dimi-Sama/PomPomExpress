@@ -18,7 +18,7 @@ class CompetenceType extends AbstractType
             ->add('description')
             ->add('personage', EntityType::class, [
                 'class' => Personnage::class,
-'choice_label' => 'id',
+'choice_label' => 'nom',
             ])
         ;
     }

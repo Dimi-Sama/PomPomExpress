@@ -18,7 +18,7 @@ class UltimeType extends AbstractType
             ->add('description')
             ->add('personnage', EntityType::class, [
                 'class' => Personnage::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
         ;
     }

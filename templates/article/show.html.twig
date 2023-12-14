@@ -19,6 +19,20 @@
 
     
     {{ include('article/_delete_form.html.twig') }}
+
+        {% for com in article.Commentaires %}
+    <div class ="commentaire">
+
+        <div class="utilisateur">{{com.utilisateur}}</div>
+        <div class ="commentaire">{{com.contenu}}</div>
+        
+        <form method="post" action="{{ path('app_commentaire_delete', {'id': com.id}) }}" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ com.id) }}">
+            <button class="btn btn-danger rounded-pill px-3" type="submit">Delete</button>
+        </form>
+
+    </div>
+    {% endfor %}
     
 <style>
 /* Titre de l'article */

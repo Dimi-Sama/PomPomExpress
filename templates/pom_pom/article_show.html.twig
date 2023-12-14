@@ -19,12 +19,15 @@
         <!-- Le contenu du formulaire de commentaire sera chargé ici -->
      {{ include('commentaire/_form.html.twig') }}
     </div>
-    
+   
     {% for com in article.Commentaires %}
     <div class ="commentaire">
 
         <div class="utilisateur">{{com.utilisateur}}</div>
         <div class ="commentaire">{{com.contenu}}</div>
+        
+
+
     </div>  
     {% endfor %}
         

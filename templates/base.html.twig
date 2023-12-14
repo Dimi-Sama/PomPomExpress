@@ -16,6 +16,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 		<style>
+			html {
+				scroll-behavior: smooth;
+			}
 			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital, wght@0, 700;1, 700 &display=swap');
 			@font-face {
 				font-family: 'SpyAgency';
@@ -84,7 +87,7 @@
 </html></header></body><main><div class="container">
 <video id="video" src="../images/img/honkai-star-rail-desktop-wallpaperwaifu-com.mp4" muted loop autoplay></video>
 
-{% block body %}{% endblock %}</div></main><footer class=" fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 bg-dark" style=";"><div class="col-md-4 d-flex align-items-center">
+{% block body %}{% endblock %}</div></main><footer class=" sticky-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 bg-dark" style=";"><div class="col-md-4 d-flex align-items-center">
 <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
 	<svg class="bi" width="30" height="24">
 		<use xlink:href="#bootstrap"></use>

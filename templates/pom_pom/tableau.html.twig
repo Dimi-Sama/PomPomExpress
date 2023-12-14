@@ -34,13 +34,14 @@
 		</div>
 
 	{% endfor %}
-	{#
-												{% for allIds in inventairesPersonnage %}
-													<p style="color:white">
-														{{ allIds }}
-													</p>
-												{% else %}
-													<p>C'est un peu vide ici non? [Database error?]</p>
-											
-												{% endfor %}
-											#}
+	{% set owningCharacter = 0 %}
+	{% for allIds in inventairesPersonnage %}
+		<!--- character {{ allIds }} is owned -->
+		{%set owningCharacter = owningCharacter + 1%}
+	{% else %}
+		<p>C'est un peu vide ici non? [Database error?]</p>
+
+	{% endfor %}
+	{% if owningCharacter > 0 %}
+		<button onclick="onDownload()">Telecharger listes des perso. obtenues</button>
+	{% endif %}

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% set numberOfLines = 0 %}
 
 {% block title %}
 	bienvenue dans POM POM EXPRESS
@@ -138,16 +138,15 @@ $("." + val).hide();
 }
 	</script>
 	<script>
-		{% set numberOfLines = 0 %}
-{% for allIds in inventairesPersonnage %}
-{% set numberOfLines = numberOfLines + 1 %}
-{% endfor %}
+	{% for allIds in inventairesPersonnage %}
+		{% set numberOfLines = numberOfLines + 1 %}
+	{% endfor %}
 // first loop so find out how much lines for json file ↑
 const jsonData = {
 "Characters": [
 {% for allIds in inventairesPersonnage %}
 {% if numberOfLines - 1 == 0 %}
-{% set numberOfLines = NumberOfLines - 1 %}
+{% set numberOfLines = numberOfLines - 1 %}
 {id: "{{ allIds }}"}
 {% else %}
 {

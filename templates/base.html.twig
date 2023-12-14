@@ -29,8 +29,11 @@
 				background: black;
 				font-family: 'Roboto', sans-serif;
 			}
+			.container {
+				min-height: 100vh;
+			}
 			.container video {
-				position: absolute;
+				position: fixed;
 				overflow: hidden;
 				top: 0;
 				left: 0;
@@ -40,15 +43,13 @@
 				transition: 0.5s;
 				z-index: -1;
 				opacity: 1;
-				scale(1.1);
-				filter: blur(1.1px); /* Ajustez la valeur pour contrôler l'intensité du flou */
+				filter: blur(2px); /* Ajustez la valeur pour contrôler l'intensité du flou */
 			}
 		</style>
 	</head>
 	<body>
-		<header class="p-3 bg-dark text-white">
-
-			<div class="container">
+		<header class=" sticky-top p-3 bg-dark text-white">
+			<div class="container-lg">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 						<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
@@ -82,36 +83,47 @@
 
 				</div>
 			</div>
-		</div>
-	</body>
-</html></header></body><main><div class="container">
-<video id="video" src="../images/img/honkai-star-rail-desktop-wallpaperwaifu-com.mp4" muted loop autoplay></video>
+		</header>
+		<main>
+			<div class="container">
+				<video id="video" src={% block vid %}{% endblock %}muted loop autoplay></video>
 
-{% block body %}{% endblock %}</div></main><footer class=" sticky-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 bg-dark" style=";"><div class="col-md-4 d-flex align-items-center">
-<a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
-	<svg class="bi" width="30" height="24">
-		<use xlink:href="#bootstrap"></use>
-	</svg>
-</a>
-<span class="mb-3 mb-md-0 text-white">© 2022 Company, Inc</span></div><ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-<li class="ms-3">
-	<a class="text-white" href="#">
-		<svg class="bi" width="24" height="24">
-			<use xlink:href="#twitter"></use>
-		</svg>
-	</a>
-</li>
-<li class="ms-3">
-	<a class="text-white" href="#">
-		<svg class="bi" width="24" height="24">
-			<use xlink:href="#instagram"></use>
-		</svg>
-	</a>
-</li>
-<li class="ms-3">
-	<a class="text-white " href="#">
-		<svg class="bi" width="24" height="24">
-			<use xlink:href="#facebook"></use>
-		</svg>
-	</a>
-</li></ul></footer><!-- Bootstrap JavaScript Libraries --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script></html></body></html>
+				{% block body %}{% endblock %}
+			</div>
+		</main>
+		<footer class=" sticky-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 bg-dark" style=";">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
+					<svg class="bi" width="30" height="24">
+						<use xlink:href="#bootstrap"></use>
+					</svg>
+				</a>
+				<span class="mb-3 mb-md-0 text-white">© 2022 Company, Inc</span>
+			</div>
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3">
+					<a class="text-white" href="#">
+						<svg class="bi" width="24" height="24">
+							<use xlink:href="#twitter"></use>
+						</svg>
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-white" href="#">
+						<svg class="bi" width="24" height="24">
+							<use xlink:href="#instagram"></use>
+						</svg>
+					</a>
+				</li>
+				<li class="ms-3">
+					<a class="text-white " href="#">
+						<svg class="bi" width="24" height="24">
+							<use xlink:href="#facebook"></use>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</footer><!-- Bootstrap JavaScript Libraries --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+	</body>
+</html>

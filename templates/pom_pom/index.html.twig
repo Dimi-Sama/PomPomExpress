@@ -3,10 +3,17 @@
 {% block title %}Hello PomPomController!
 {% endblock %}
 
+{% block vid %}
+"../images/img/honkai-star-rail-desktop-wallpaperwaifu-com.mp4"
+{% endblock %}
+
 {% block body %}
 	{# <img src="../images/img/space-stars-background-92uihsmmvz4ne320.webp" alt="" srcset=""> #}
 
 	<style>
+	html{
+		overflow: hidden
+	}
 		.example-wrapper {
 			margin: 1em auto;
 			max-width: 800px;
@@ -18,11 +25,13 @@
 			padding: 2px 6px;
 		}
 
+		.container{
+			text-align:center;
+			overflow:hidden;
+		}
 
-		.div1 h1 {
-			/* Pom-Pom Express */
-
-			position: absolute;
+		.container h1 {
+			margin-top:1.7em;
 			font-family: 'SpyAgency';
 			font-style: italic;
 			font-stretch: semi-expanded;
@@ -30,17 +39,10 @@
 			font-size: 175px;
 			line-height: 152px;
 			color: #FFFFFF;
-			margin-top: 12%;
-			margin-left: calc(6% + 15px);
 			-webkit-text-stroke: 5px black;
 			text-shadow: -12px 10px #ffc107;
-
-
 		}
 	</style>
-	<div class="parent">
-		<div class="div1">
 			<h1>POM-POM EXPRESS<h1></div>
-			</div>
 
 		{% endblock %}

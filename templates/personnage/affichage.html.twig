@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block vid %}
-	"../../images/vid/silver-wolf-honkai.mp4"
+	"../../images/vid/pela-honkai.mp4"
 {% endblock %}
 {% block body %}
+	<style>
+		.container video {
+			scale: 1.3;
+		}
+	</style>
 
 	<h1>Personnage
 		{% if is_granted('ROLE_USER') %}

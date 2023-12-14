@@ -111,12 +111,14 @@
 		{{ dateFormat }}</p>
 	<div class="contenu">{{ article.contenu | raw }}</div>
 
-
-	<div
-		id="commentFormContainer">
+{% if is_granted("ROLE_USER") %}
+	<div id="commentFormContainer">
 		<!-- Le contenu du formulaire de commentaire sera chargé ici -->
 		{{ include('commentaire/_form.html.twig') }}
 	</div>
+	{% else %}
+	<h3>Merci de login pour pourvoir commenter</h3>
+{% endif %}
 
 	{% for com in article.Commentaires %}
 		<div class="commentaire">

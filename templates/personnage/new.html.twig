@@ -7,5 +7,11 @@
 
     {{ include('personnage/_form.html.twig') }}
 
-    <a href="{{ path('app_personnage_index') }}">back to list</a>
+    <div class="anti_footer"><a href="{{ path('app_personnage_index') }}">back to list</a><div>
+
+    <style>
+    .anti_footer{
+        margin-bottom: 20%;
+    }
+    </style>
 {% endblock %}

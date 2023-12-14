@@ -5,7 +5,7 @@
 
 {% block body %}
 	<h1>Personnage index</h1>
-
+	<a href="{{ path('app_personnage_new') }}">Create new</a>
 	<table class="table">
 		<thead>
 			<tr>
@@ -40,4 +40,4 @@
 </tr>{% else %}
 <tr>
 	<td colspan="4">C'est un peu vide ici non? [Database error?]</td>
-</tr>{% endfor %}</tbody></table><a href="{{ path('app_personnage_new') }}">Create new</a>{% endblock %}
+</tr>{% endfor %}</tbody></table>{% endblock %}

@@ -168,7 +168,7 @@
 
 	<div class="containerr">
 		<div class="perso">
-			<h1 class='T {{ personnage.attribut }}'>{{ personnage.nom }}</h1>
+			<h1 class='T {{ personnage.attribut }}'>{{ personnage.nom|replace({'_': ' '}) }}</h1>
 			{% if personnage.etoile == 5 %}
 
 				<img style="width: 280px;" src="../../images/etoile/5.png" alt="5 etoiles">

@@ -42,6 +42,8 @@
 		<p>C'est un peu vide ici non? [Database error?]</p>
 
 	{% endfor %}
-	{% if owningCharacter > 0 %}
-		<button style="background-image: url('https://media1.tenor.com/m/ohjO-ZMAlFcAAAAd/mike-o-hearn.gif');background-size: contain;" onclick="onDownload()">Telecharger listes des perso. obtenues</button>
+	{% if is_granted('ROLE_USER')  %}
+		{% if owningCharacter > 0 %}
+			<button style="background-image: url('https://media1.tenor.com/m/ohjO-ZMAlFcAAAAd/mike-o-hearn.gif');background-size: contain;" onclick="onDownload()">Telecharger listes des perso. obtenues</button>
+		{% endif %}
 	{% endif %}

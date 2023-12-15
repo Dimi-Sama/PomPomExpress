@@ -28,11 +28,17 @@ class ArticleController extends AbstractController
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('image')->getData();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('upload_directory'), $fileName);
+    
+            $article->setImage($fileName);
+    
             $entityManager->persist($article);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -55,12 +61,30 @@ class ArticleController extends AbstractController
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            // Gère l'upload du fichier ici
+            $file = $form->get('image')->getData();
+            
+            if ($file) {
+                // Supprime l'ancienne image si elle existe
+                if ($article->getImage()) {
+                    unlink($this->getParameter('upload_directory') . '/' . $article->getImage());
+                }
+    
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->getParameter('upload_directory'), $fileName);
+    
+                // Met à jour le champ imageName dans l'entité Article
+                $article->setImage($fileName);
+            }
+    
+            // Sauvegarde l'article en base de données
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
+    
 
         return $this->render('article/edit.html.twig', [
             'article' => $article,

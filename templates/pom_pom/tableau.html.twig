@@ -41,6 +41,6 @@
 	{% endfor %}
 	{% if is_granted('ROLE_USER')  %}
 		{% if owningCharacter > 0 %}
-			<button style="background-image: url('https://media1.tenor.com/m/ohjO-ZMAlFcAAAAd/mike-o-hearn.gif');background-size: contain;" onclick="onDownload()">Telecharger listes des perso. obtenues</button>
+			<button style="background-image: url('https://media1.tenor.com/m/ohjO-ZMAlFcAAAAd/mike-o-hearn.gif');background-size: contain;font-weight: bold;color:white;font-size:1em;" onclick="onDownload()">Telecharger listes des perso. obtenues</button>
 		{% endif %}
 	{% endif %}

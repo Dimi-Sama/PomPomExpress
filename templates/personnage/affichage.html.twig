@@ -2,14 +2,145 @@
 {% block vid %}
 	"../../images/vid/pela-honkai.mp4"
 {% endblock %}
+{% set idPersonnage = personnage.id %}
+{% set nomPersonnage = personnage.nom %}
 {% block body %}
 	<style>
+		.Glace {
+			-webkit-text-stroke: 1px rgba(0,191,255,1);
+
+		}
+		.Imaginaire {
+			-webkit-text-stroke: 1px rgba(255,233,0,1);
+
+		}
+		.Quantique {
+			-webkit-text-stroke: 1px rgba(87,59,236,1);
+
+		}
+		.Physique {
+			-webkit-text-stroke: 1px rgb(113, 103, 103);
+
+		}
+		.Feu {
+			-webkit-text-stroke: 1px rgba(255,21,21,1);
+
+		}
+		.Foudre {
+			-webkit-text-stroke: 1px rgba(198,41,159,1);
+
+		}
+		.Vent {
+			-webkit-text-stroke: 1px rgba(8,177,0,1);
+		}
+
+		.T.Glace {
+			-webkit-text-stroke: 3px rgba(0,191,255,1);
+
+		}
+		.T.Imaginaire {
+			-webkit-text-stroke: 3px rgba(255,233,0,1);
+
+		}
+		.T.Quantique {
+			-webkit-text-stroke: 3px rgba(87,59,236,1);
+
+		}
+		.T.Physique {
+			-webkit-text-stroke: 3px rgb(113, 103, 103);
+
+		}
+		.T.Feu {
+			-webkit-text-stroke: 3px rgba(255,21,21,1);
+
+		}
+		.T.Foudre {
+			-webkit-text-stroke: 3px rgba(198,41,159,1);
+
+		}
+		.T.Vent {
+			-webkit-text-stroke: 3px rgba(8,177,0,1);
+		}
+
+		@font-face {
+			font-family: 'SpyAgency';
+			src: url('../../font/spyagency3_2.ttf') format('truetype');
+		}
+		.container {
+			background: #000000c2;
+			text-align: center;
+		}
+		.container h2{
+			color:white;
+		}
 		.container video {
 			scale: 1.3;
 		}
+		.containerr {
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr;
+			gap: 0 0;
+			grid-auto-flow: row;
+			grid-template-areas: "p1 perso p2" "p1 perso p2" "p1 perso p2";
+		}
+
+		.perso {
+			grid-area: perso;
+			text-align: center;
+		}
+		.perso img {
+			width: 100%;
+		}
+		.perso h1 {
+			font-family: 'SpyAgency';
+			font-style: italic;
+			font-weight: 400;
+			font-size: 5em;
+			color: #FFFFFF;
+		}
+
+		.p1 {
+			grid-area: p1;
+			text-align: left;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			gap: 1em;
+			height:100%;
+		}
+
+		.p2 {
+			grid-area: p2;
+			text-align: right;
+			display: flex;
+			flex-direction: column;
+			align-items: end;
+			gap: 1em;
+		}
+		.divInfo {
+			color: white;
+			background: #000000c2;
+  border-radius: 20px;
+  border: solid 3px #ffffffb8;
+  width: 90%;
+		}
+		.divInfo h3{
+			color: white;
+			font-size: 3em;
+  font-weight: bold;
+		}
+		.divInfo h4{
+			color: white;
+			font-size: 1.5em;
+  font-weight: bold;
+		}
+		.divInfo p{
+			color: white;
+		}
 	</style>
 
-	<h1>Personnage
+	<h2>
 		{% if is_granted('ROLE_USER') %}
 			{% set foundSame = 0 %}
 			{% for allIds in inventairesPersonnage %}
@@ -35,84 +166,54 @@
 		{% endif %}
 	</h1>
 
-	<table class="table">
-		<div>
-			<tbody>
-				<tr>
-					<th>Nom</th>
-					<td>{{ personnage.nom }}</td>
-				</tr>
-				<tr>
-					<th>Etoile</th>
-					<td>{{ personnage.etoile }}</td>
-				</tr>
-				<tr>
-					<th>Attribut</th>
-					<td>{{ personnage.attribut }}</td>
-				</tr>
+	<div class="containerr">
+		<div class="perso">
+			<h1 class='T {{ personnage.attribut }}'>{{ personnage.nom }}</h1>
+			{% if personnage.etoile == 5 %}
 
-				<tr>
-					<th>Voie</th>
-					<td>{{ personnage.voie }}</td>
-				</tr>
-				<th>Ultime</th>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>{{ personnage.ultime.nom }}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<td>{{ personnage.ultime.description }}</td>
-					</tbody>
-				</tr>
-				<th>Compétence</th>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>{{ personnage.competence.nom }}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<td>{{ personnage.competence.description }}</td>
-					</tbody>
-				</tr>
-				<th>Talent</th>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>{{ personnage.talent.nom }}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<td>{{ personnage.talent.description }}</td>
-					</tbody>
-				</tr>
-				<th>Normale</th>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>{{ personnage.normale.nom }}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<td>{{ personnage.normale.description }}</td>
-					</tbody>
-				</tr>
-
-
-			</tbody>
+				<img style="width: 280px;" src="../../images/etoile/5.png" alt="5 etoiles">
+			{% else %}
+				<img style="width: 280px;" src="../../images/etoile/4.png" alt="4 etoiles">
+			{% endif %}
+			<div class="img-container">
+				<img src="{{ asset('images/perso/fullBg/Summon_Splash Art_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">
+			</div>
+			<div class="divInfo">
+				<h3 class='{{ personnage.attribut }}'>Ultime</h3>
+				<h4 class='{{ personnage.attribut }}'>{{ personnage.ultime.nom }}</h4>
+				<p>{{ personnage.ultime.description }}</p>
+			</div>
 		</div>
-	</table>
+		<div class="p1">
 
-	{% set idPersonnage = personnage.id %}
-	{% set nomPersonnage = personnage.nom %}
+			<img style="width:35%" src="../../images/attribut/{{ personnage.attribut }}.png" alt="attribut : {{ personnage.attribut }}">
+			<div class="divInfo">
+				<h3 class='{{ personnage.attribut }}'>ATQ normale</h3>
+				<h4 class='{{ personnage.attribut }}'>{{ personnage.normale.nom }}</h4>
+				<p>{{ personnage.normale.description }}</p>
+			</div>
+			<div class="divInfo">
+				<h3 class='{{ personnage.attribut }}'>Compétence</h3>
+				<h4 class='{{ personnage.attribut }}'>{{ personnage.competence.nom }}</h4>
+				<p>{{ personnage.competence.description }}</p>
+			</div>
 
-	<div class="img-container">
+		</div>
+		<div class="p2">
+			<img style="width:35%" src="../../images/voie/{{ personnage.voie.id }}_{{ personnage.voie }}.png" alt="Voie : {{ personnage.voie }}">
+			<div class="divInfo">
+				<h3 class='{{ personnage.attribut }}'>Talent</h3>
+				<h4 class='{{ personnage.attribut }}'>{{ personnage.talent.nom }}</h4>
+				<p>{{ personnage.talent.description }}</p>
+			</div>
+			<div class="divInfo">
+				<h3 class='{{ personnage.attribut }}'>Technique</h3>
+				<h4 class='{{ personnage.attribut }}'>{{ personnage.technique.nom }}</h4>
+				<p>{{ personnage.technique.description }}</p>
+			</div>
 
-		<img src="{{ asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">
-	</a>
-</div>
+		</div>
+	</div>
 
 
-<style>/* Style pour chaque image */</style>{% endblock %}
+{% endblock %}

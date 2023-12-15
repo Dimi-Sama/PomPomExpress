@@ -38,9 +38,6 @@
 	{% for allIds in inventairesPersonnage %}
 		<!--- character {{ allIds }} is owned -->
 		{%set owningCharacter = owningCharacter + 1%}
-	{% else %}
-		<p>C'est un peu vide ici non? [Database error?]</p>
-
 	{% endfor %}
 	{% if is_granted('ROLE_USER')  %}
 		{% if owningCharacter > 0 %}

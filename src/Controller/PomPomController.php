@@ -109,11 +109,11 @@ class PomPomController extends AbstractController
                 setcookie("UserOwnedCharacters", serialize($getOwnedCharacter));
             }
 
-            return $this->redirectToRoute('public_personnage');
+            return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
         } else {
-            return $this->redirectToRoute('public_personnage');
+            return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
         }
-        return $this->redirectToRoute('public_personnage');
+        return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
     }
     #[Route('/wiki/SupprimerDansInventraire', name: 'app_personnage_user_supprimer', methods: ['GET', 'POST'])]
     public function deleteToAccount(): Response
@@ -134,10 +134,10 @@ class PomPomController extends AbstractController
                 setcookie("UserOwnedCharacters", serialize($getOwnedCharacter));
             }
 
-            return $this->redirectToRoute('public_personnage');
+            return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
         } else {
-            return $this->redirectToRoute('public_personnage');
+            return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
         }
-        return $this->redirectToRoute('public_personnage');
+        return $this->redirectToRoute('app_personnage_affichage', ['id' => $_GET["addCharacter"]], Response::HTTP_SEE_OTHER);
     }
 }

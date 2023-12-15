@@ -179,7 +179,7 @@
 
 				{% set imagePath = 'images/perso/fullBg/Summon_Splash Art_' ~ nomPersonnage ~ '.png' %}
 
-				{% if file_exists(asset(imagePath)) %}
+				{% if file_exists('images/perso/fullBg/Summon_Splash Art_' ~ nomPersonnage ~ '.png') %}
 					<img src="{{ asset(imagePath) }}" alt="Description de l'image">
 				{% else %}
 					<img src="{{ asset('images/perso/fullnoBg/Character_Portrait_' ~ nomPersonnage ~ '.png') }}" alt="Description de l'image">

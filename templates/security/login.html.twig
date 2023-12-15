@@ -8,7 +8,6 @@
 	../../images/vid/Honkai-Star-Rail-Expedition.mp4
 {% endblock %}
 {% block body %}
-	<form method="post">
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
@@ -21,8 +20,9 @@
 			</div>
 		{% endif %}
 
-		<div class="container">
-			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<div class="containerr">
+		<form method="post">
+			<h1 class="h3 mb-3 mt-3 font-weight-normal">Log in</h1>
 			<label for="inputUsername">Username</label>
 			<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
 			<label for="inputPassword">Password</label>
@@ -30,22 +30,29 @@
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<button class="btn btn-lg btn-primary" type="submit">
-				Sign in
+			<button class="btn btn-lg btn-primary mb-3" type="submit">
+				Se connecter
 			</button>
+				</form>
 		</div>
-	</form>
 	<style>
-		.container {
+		.containerr {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			margin: 1.5em auto 0;
 			text-align: center;
-			background: rgba(0, 0, 255, 0.2);
+			background: rgba(0, 0, 0, 0.6);
 			border-radius: 20px;
 			color: white;
-			width: 800px;
+			width: 60%;
+		}
+		.containerr form{
+			gap: 1em;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 70%;
 		}
 	</style>
 {% endblock %}

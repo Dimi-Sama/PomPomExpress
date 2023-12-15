@@ -46,7 +46,9 @@ class PomPomController extends AbstractController
     #[Route('/blog/article', name: 'public_article', methods: ['GET'])]
     public function article(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->createQueryBuilder('a')
+        ->orderBy('a.dateCrea', 'DESC')
+        ->getQuery();
 
         $pagination = $paginator->paginate(
             $articles,

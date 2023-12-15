@@ -1,19 +1,23 @@
 {# {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
+{% block vid %}
+	../../images/vid/Honkai-Star-Rail-Expedition.mp4
+{% endblock %}
 {% block body %}
-    <h1>Register</h1>
+	<h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+	{{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
+	{{ form_start(registrationForm) }}
+	{{ form_row(registrationForm.username) }}
+	{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.dateInscri) }}
+	{{ form_row(registrationForm.mail) }}
+	{{ form_row(registrationForm.dateInscri) }}
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
@@ -42,14 +46,23 @@
 		    {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.dateInscri) }}
+			<h1 class="h3 mb-3 mt-3 font-weight-normal">Register</h1>
 
-        <button type="submit" class="btn">Register</button>
+        <label for="registration_form_username" class="form-label required">Username</label>
+        <input type="text" id="registration_form_username" name="registration_form[username]" required="required" maxlength="180" class="form-control">        
+        <label for="registration_form_plainPassword" class="form-label required">Password</label>
+        <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required="required" autocomplete="new-password" class="form-control is-invalid">        
+        
+        <label for="registration_form_mail" class="form-label required">Mail</label>
+        <input type="email" id="registration_form_mail" name="registration_form[mail]" required="required" class="form-control" >     
+
+        {{ form_row(registrationForm.dateInscri) }}
+		{{ form_row(registrationForm.agreeTerms) }}
+		{{ form_row(registrationForm._token) }}
+
+        <button class="btn btn-lg btn-primary mb-3" type="submit">
+				Se register
+			</button>
 		</div>
 	<style>
 		.containerr {
